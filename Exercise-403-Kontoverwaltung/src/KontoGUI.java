@@ -13,6 +13,8 @@ public class KontoGUI extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         miAddUser = new javax.swing.JMenuItem();
         miPerformAccountTest = new javax.swing.JMenuItem();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        miNeuesKonto = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -26,6 +28,9 @@ public class KontoGUI extends javax.swing.JFrame {
 
         miPerformAccountTest.setText("perform account test");
         jPopupMenu1.add(miPerformAccountTest);
+
+        miNeuesKonto.setText("neues Konto anlegen");
+        jPopupMenu2.add(miNeuesKonto);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Konto-Verwaltung");
@@ -114,10 +119,12 @@ public class KontoGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JMenuItem miAddUser;
+    private javax.swing.JMenuItem miNeuesKonto;
     private javax.swing.JMenuItem miPerformAccountTest;
     // End of variables declaration//GEN-END:variables
 }

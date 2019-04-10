@@ -158,20 +158,28 @@ public class KontoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miNeuesKontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNeuesKontoActionPerformed
-        String eingabe = JOptionPane.showInputDialog("Bitte im folgenden format: \"Name,Geldbetrag\" eingeben!");
+        String eingabe = JOptionPane.showInputDialog("Bitte im folgenden format: \"Name,Geldbetrag\" eingeben!","Kontoname,75");
+        
         String eingabe2[] = eingabe.split(",");
-        Konto k = new Konto(Double.parseDouble(eingabe2[1]), eingabe2[0]);
-        cbKonto.addItem(k);
-        kontos.add(k);
-        userList.setModel(k);
-        lbGeld.setText(k.getSaldo()+"€");
+
+        try {
+            Konto k = new Konto(Double.parseDouble(eingabe2[1]), eingabe2[0]);
+            cbKonto.addItem(k);
+            kontos.add(k);
+            userList.setModel(k);
+            lbGeld.setText(k.getSaldo() + "€");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Bitte das Format beachten!");
+            miNeuesKontoActionPerformed(evt);
+        }
+
 
     }//GEN-LAST:event_miNeuesKontoActionPerformed
 
     private void miAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddUserActionPerformed
 
         Konto k = (Konto) cbKonto.getSelectedItem();
-        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!"), k, logTextArea,lbGeld);
+        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!","Username"), k, logTextArea, lbGeld);
         k.addUser(u);
         userList.setModel(k);
 
@@ -180,12 +188,12 @@ public class KontoGUI extends javax.swing.JFrame {
     private void cbKontoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbKontoItemStateChanged
         Konto k = (Konto) cbKonto.getSelectedItem();
         userList.setModel(k);
-        lbGeld.setText(k.getSaldo()+"€");
+        lbGeld.setText(k.getSaldo() + "€");
     }//GEN-LAST:event_cbKontoItemStateChanged
 
     private void miPerformAccountTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPerformAccountTestActionPerformed
         Konto k = (Konto) cbKonto.getSelectedItem();
-        int user[] =userList.getSelectedIndices();
+        int user[] = userList.getSelectedIndices();
         k.startTest(user);
     }//GEN-LAST:event_miPerformAccountTestActionPerformed
 

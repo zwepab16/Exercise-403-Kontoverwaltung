@@ -36,11 +36,16 @@ public class KontoBenutzer implements Runnable {
             int geld = r.nextInt(50 - 10 + 1) + 10;
             if (überweisen) {
                 k.überweisen(geld);
+               
                 log.append(String.format("%s: überweist %d€ ---> %.0f€ \n", name, geld, k.getSaldo()));
                 // System.out.println(name+": "+"Geld überweisen!"+k.getSaldo());
 
             } else if (k.getSaldo() - geld >= 0) {
-                k.abheben(geld);
+                try {
+                    k.abheben(geld);
+                } catch (NoMoneyException ex) {
+                   
+                }
                 log.append(String.format("%s: hebt ab %d€ ---> %.0f€ \n", name, geld, k.getSaldo()));
                 // System.out.println(name+": "+"Geld abheben!"+k.getSaldo());
             } else {

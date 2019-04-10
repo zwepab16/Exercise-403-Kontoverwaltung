@@ -42,7 +42,7 @@ public class Konto extends javax.swing.AbstractListModel {
 
     }
 
-    public void abheben(int geld) {
+    public void abheben(int geld) throws NoMoneyException{
         this.saldo -= geld;
     }
 

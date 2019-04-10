@@ -12,13 +12,13 @@ public class KontoBenutzer implements Runnable {
     private String name;
     private Konto k;
     private JTextArea log;
-    JLabel label=new JLabel();
+    JLabel label = new JLabel();
 
-    public KontoBenutzer(String name, Konto k, JTextArea log,JLabel label) {
+    public KontoBenutzer(String name, Konto k, JTextArea log, JLabel label) {
         this.name = name;
         this.k = k;
         this.log = log;
-        this.label=label;
+        this.label = label;
     }
 
     public String toString() {
@@ -36,7 +36,7 @@ public class KontoBenutzer implements Runnable {
             int geld = r.nextInt(50 - 10 + 1) + 10;
             if (überweisen) {
                 k.überweisen(geld);
-               
+
                 log.append(String.format("%s: überweist %d€ ---> %.0f€ \n", name, geld, k.getSaldo()));
                 // System.out.println(name+": "+"Geld überweisen!"+k.getSaldo());
 
@@ -44,7 +44,7 @@ public class KontoBenutzer implements Runnable {
                 try {
                     k.abheben(geld);
                 } catch (NoMoneyException ex) {
-                   
+
                 }
                 log.append(String.format("%s: hebt ab %d€ ---> %.0f€ \n", name, geld, k.getSaldo()));
                 // System.out.println(name+": "+"Geld abheben!"+k.getSaldo());
@@ -52,7 +52,7 @@ public class KontoBenutzer implements Runnable {
                 log.append(String.format("%s: wartet auf Geld zum Abheben \n", name));
                 //   System.out.println(name+": "+"Zu wenig geld!"+k.getSaldo());
             }
-            label.setText(k.getSaldo()+"€");
+            label.setText(k.getSaldo() + "€");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {

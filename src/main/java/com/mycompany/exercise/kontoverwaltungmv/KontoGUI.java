@@ -158,8 +158,8 @@ public class KontoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miNeuesKontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNeuesKontoActionPerformed
-        String eingabe = JOptionPane.showInputDialog("Bitte im folgenden format: \"Name,Geldbetrag\" eingeben!","Kontoname,75");
-        
+        String eingabe = JOptionPane.showInputDialog("Bitte im folgenden format: \"Name,Geldbetrag\" eingeben!", "Kontoname,75");
+
         String eingabe2[] = eingabe.split(",");
 
         try {
@@ -179,7 +179,7 @@ public class KontoGUI extends javax.swing.JFrame {
     private void miAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddUserActionPerformed
 
         Konto k = (Konto) cbKonto.getSelectedItem();
-        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!","Username"), k, logTextArea, lbGeld);
+        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!", "Username"), k, logTextArea, lbGeld);
         k.addUser(u);
         userList.setModel(k);
 

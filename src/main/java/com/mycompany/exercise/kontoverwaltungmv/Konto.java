@@ -42,16 +42,16 @@ public class Konto extends javax.swing.AbstractListModel {
 
     }
 
-    public void abheben(int geld) throws NoMoneyException{
+    public void abheben(int geld) throws NoMoneyException {
         this.saldo -= geld;
     }
 
-    public void startTest(int[]benutzer) {
+    public void startTest(int[] benutzer) {
 
-        for (int i=0;i<benutzer.length;i++) {
-            
+        for (int i = 0; i < benutzer.length; i++) {
+
             Thread d = new Thread(users.get(benutzer[i]));
-           
+
             d.start();
 
         }

@@ -1,6 +1,5 @@
 package com.mycompany.exercise.kontoverwaltungmv;
 
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -170,9 +169,9 @@ public class KontoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_miNeuesKontoActionPerformed
 
     private void miAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddUserActionPerformed
-       
+
         Konto k = (Konto) cbKonto.getSelectedItem();
-         KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!"),k,logTextArea);
+        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!"), k, logTextArea);
         k.addUser(u);
         userList.setModel(k);
 

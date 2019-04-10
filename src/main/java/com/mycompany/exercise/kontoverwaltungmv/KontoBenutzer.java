@@ -3,6 +3,7 @@ package com.mycompany.exercise.kontoverwaltungmv;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 
@@ -11,11 +12,13 @@ public class KontoBenutzer implements Runnable {
     private String name;
     private Konto k;
     private JTextArea log;
+    JLabel label=new JLabel();
 
-    public KontoBenutzer(String name, Konto k, JTextArea log) {
+    public KontoBenutzer(String name, Konto k, JTextArea log,JLabel label) {
         this.name = name;
         this.k = k;
         this.log = log;
+        this.label=label;
     }
 
     public String toString() {
@@ -44,6 +47,7 @@ public class KontoBenutzer implements Runnable {
                 log.append(String.format("%s: wartet auf Geld zum Abheben \n", name));
                 //   System.out.println(name+": "+"Zu wenig geld!"+k.getSaldo());
             }
+            label.setText(k.getSaldo()+"€");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {

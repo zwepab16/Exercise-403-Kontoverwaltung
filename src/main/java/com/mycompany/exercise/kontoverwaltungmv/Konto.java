@@ -1,6 +1,8 @@
 package com.mycompany.exercise.kontoverwaltungmv;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Konto extends javax.swing.AbstractListModel {
 
@@ -44,10 +46,12 @@ public class Konto extends javax.swing.AbstractListModel {
         this.saldo -= geld;
     }
 
-    public void startTest() {
+    public void startTest(int[]benutzer) {
 
-        for (KontoBenutzer user : users) {
-            Thread d = new Thread(user);
+        for (int i=0;i<benutzer.length;i++) {
+            
+            Thread d = new Thread(users.get(benutzer[i]));
+           
             d.start();
 
         }

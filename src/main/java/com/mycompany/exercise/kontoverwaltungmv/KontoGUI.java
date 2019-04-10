@@ -20,7 +20,7 @@ public class KontoGUI extends javax.swing.JFrame {
         miPerformAccountTest = new javax.swing.JMenuItem();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         miNeuesKonto = new javax.swing.JMenuItem();
-        jLabel1 = new javax.swing.JLabel();
+        lbGeld = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         userList = new javax.swing.JList<>();
@@ -57,10 +57,10 @@ public class KontoGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Konto-Verwaltung");
 
-        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("360€");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Source Sans Pro Semibold", 0, 18), new java.awt.Color(50, 100, 20))); // NOI18N
+        lbGeld.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
+        lbGeld.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbGeld.setText("360€");
+        lbGeld.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Source Sans Pro Semibold", 0, 18), new java.awt.Color(50, 100, 20))); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(50, 100, 20))); // NOI18N
 
@@ -128,7 +128,7 @@ public class KontoGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbGeld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -150,7 +150,7 @@ public class KontoGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(lbGeld)
                 .addContainerGap())
         );
 
@@ -164,14 +164,14 @@ public class KontoGUI extends javax.swing.JFrame {
         cbKonto.addItem(k);
         kontos.add(k);
         userList.setModel(k);
-
+        lbGeld.setText(k.getSaldo()+"€");
 
     }//GEN-LAST:event_miNeuesKontoActionPerformed
 
     private void miAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddUserActionPerformed
 
         Konto k = (Konto) cbKonto.getSelectedItem();
-        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!"), k, logTextArea);
+        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!"), k, logTextArea,lbGeld);
         k.addUser(u);
         userList.setModel(k);
 
@@ -180,11 +180,13 @@ public class KontoGUI extends javax.swing.JFrame {
     private void cbKontoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbKontoItemStateChanged
         Konto k = (Konto) cbKonto.getSelectedItem();
         userList.setModel(k);
+        lbGeld.setText(k.getSaldo()+"€");
     }//GEN-LAST:event_cbKontoItemStateChanged
 
     private void miPerformAccountTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPerformAccountTestActionPerformed
         Konto k = (Konto) cbKonto.getSelectedItem();
-        k.startTest();
+        int user[] =userList.getSelectedIndices();
+        k.startTest(user);
     }//GEN-LAST:event_miPerformAccountTestActionPerformed
 
     public static void main(String args[]) {
@@ -198,7 +200,6 @@ public class KontoGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Konto> cbKonto;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -206,6 +207,7 @@ public class KontoGUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbGeld;
     private javax.swing.JTextArea logTextArea;
     private javax.swing.JMenuItem miAddUser;
     private javax.swing.JMenuItem miNeuesKonto;

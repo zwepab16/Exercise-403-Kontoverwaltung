@@ -1,3 +1,5 @@
+package com.mycompany.exercise.kontoverwaltungmv;
+
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -168,8 +170,9 @@ public class KontoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_miNeuesKontoActionPerformed
 
     private void miAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAddUserActionPerformed
-        KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!"));
+       
         Konto k = (Konto) cbKonto.getSelectedItem();
+         KontoBenutzer u = new KontoBenutzer(JOptionPane.showInputDialog("Bitte deinen User-Namen eingeben!"),k,logTextArea);
         k.addUser(u);
         userList.setModel(k);
 
@@ -182,7 +185,7 @@ public class KontoGUI extends javax.swing.JFrame {
 
     private void miPerformAccountTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPerformAccountTestActionPerformed
         Konto k = (Konto) cbKonto.getSelectedItem();
-        
+        k.startTest();
     }//GEN-LAST:event_miPerformAccountTestActionPerformed
 
     public static void main(String args[]) {

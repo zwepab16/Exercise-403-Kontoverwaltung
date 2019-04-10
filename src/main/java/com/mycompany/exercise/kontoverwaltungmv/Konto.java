@@ -1,3 +1,5 @@
+package com.mycompany.exercise.kontoverwaltungmv;
+
 
 import java.util.ArrayList;
 
@@ -41,6 +43,19 @@ public class Konto extends javax.swing.AbstractListModel {
     
     public void abheben(int geld){
         this.saldo-=geld;
+    }
+    
+    public void startTest(){
+        
+        for (KontoBenutzer user : users) {
+            Thread d=new Thread(user);
+            d.start();
+            
+        }
+    }
+
+    public double getSaldo() {
+        return saldo;
     }
     
     
